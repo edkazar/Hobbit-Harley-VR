@@ -13,8 +13,12 @@ public class ButtonManager : MonoBehaviour
     [SerializeField]
     Transform playerTransform;
 
+    [SerializeField]
+    GameObject controllerPointer;
+
     private Transform lastWayPoint;
 
+    private GameObject UIController;
     private UITaskController myUIController;
 
     // Start is called before the first frame update
@@ -26,7 +30,7 @@ public class ButtonManager : MonoBehaviour
 
         lastWayPoint = GameObject.Find("WayPoint6").transform;
 
-        GameObject UIController = GameObject.Find("UI_Checklist");
+        UIController = GameObject.Find("UI_Checklist");
         myUIController = UIController.GetComponent<UITaskController>();
     }
 
@@ -37,6 +41,8 @@ public class ButtonManager : MonoBehaviour
         {
             finalElements.SetActive(true);
             myUIController.hideObjectives();
+            controllerPointer.SetActive(true);
+            UIController.SetActive(false);
             Time.timeScale = 0f; 
         }
     }
@@ -44,6 +50,7 @@ public class ButtonManager : MonoBehaviour
     public void startExperience()
     {
         welcomeElements.SetActive(false);
+        controllerPointer.SetActive(false);
         Time.timeScale = 1f;
     }
 

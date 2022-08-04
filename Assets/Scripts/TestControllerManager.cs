@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR;
 
 public class TestControllerManager : MonoBehaviour
 {
@@ -29,10 +30,10 @@ public class TestControllerManager : MonoBehaviour
     [SerializeField] private int watchDrivertargetTestTime;
     private int offset;
 
-    [SerializeField] private Transform anillo1Pos;
-    [SerializeField] private Transform anillo2Pos;
-    [SerializeField] private Transform anillo3Pos;
-    [SerializeField] private Transform anillo4Pos;
+    [SerializeField] private Transform ring1Pos;
+    [SerializeField] private Transform ring2Pos;
+    [SerializeField] private Transform ring3Pos;
+    [SerializeField] private Transform ring4Pos;
 
     [SerializeField] private GameObject HelpText;
     private Text helpTextField;
@@ -43,7 +44,6 @@ public class TestControllerManager : MonoBehaviour
     private TimelineController myTimelineController;
     private bool RollingProcess;
     private bool firstTest = true;
-
 
     public bool waving;
     public bool stopRenderBall = false;
@@ -146,7 +146,7 @@ public class TestControllerManager : MonoBehaviour
         if (outerTestID < myMovementController.getWaypointsLength() - 1) // minus initial waypoint
         {
             Tests[outerTestID][innerTestID].SetActive(true);
-            float mousePosX = Input.mousePosition.x;
+            float mousePosX = XRSettings.eyeTextureWidth / 2;
             Vector3 screenPos = myCamera.WorldToScreenPoint(Tests[outerTestID][innerTestID].transform.position);
 
             if (testsOrder[testOrderCounter] == 0)
@@ -154,7 +154,7 @@ public class TestControllerManager : MonoBehaviour
                 Vector3 toTarget = (Tests[outerTestID][innerTestID].transform.position - myCamera.transform.position).normalized;
                 float dotProd = Vector3.Dot(toTarget, myCamera.transform.forward);
 
-                if (screenPos.x + (offset * 10.0f) < mousePosX && dotProd > 0.35f)
+                if (screenPos.x + (offset * 20.0f) < mousePosX && dotProd > 0.35f)
                 {
                     timeTaken++;
                 }
@@ -179,17 +179,17 @@ public class TestControllerManager : MonoBehaviour
             }
             else if (testsOrder[testOrderCounter] == 2)
             {
-                float mousePosY = Input.mousePosition.y;
-                Vector3 anillo1 = myCamera.WorldToScreenPoint(anillo1Pos.position);
-                Vector3 anillo2 = myCamera.WorldToScreenPoint(anillo2Pos.position);
-                Vector3 anillo3 = myCamera.WorldToScreenPoint(anillo3Pos.position);
-                Vector3 anillo4 = myCamera.WorldToScreenPoint(anillo4Pos.position);
+                float mousePosY = XRSettings.eyeTextureHeight / 2;
+                Vector3 ring1 = myCamera.WorldToScreenPoint(ring1Pos.position);
+                Vector3 ring2 = myCamera.WorldToScreenPoint(ring2Pos.position);
+                Vector3 ring3 = myCamera.WorldToScreenPoint(ring3Pos.position);
+                Vector3 ring4 = myCamera.WorldToScreenPoint(ring4Pos.position);
 
 
-                if ((mousePosX < anillo1.x + offset*2 && mousePosX > anillo1.x - offset*2 && mousePosY < anillo1.y + offset*2 && mousePosY > anillo1.y - offset*2) ||
-                    (mousePosX < anillo2.x + offset*2 && mousePosX > anillo2.x - offset*2 && mousePosY < anillo2.y + offset*2 && mousePosY > anillo2.y - offset*2) ||
-                    (mousePosX < anillo3.x + offset*2 && mousePosX > anillo3.x - offset*2 && mousePosY < anillo3.y + offset*2 && mousePosY > anillo3.y - offset*2) ||
-                    (mousePosX < anillo4.x + offset*2 && mousePosX > anillo4.x - offset*2 && mousePosY < anillo4.y + offset*2 && mousePosY > anillo4.y - offset*2))
+                if ((mousePosX < ring1.x + offset*2 && mousePosX > ring1.x - offset*2 && mousePosY < ring1.y + offset*2 && mousePosY > ring1.y - offset*2) ||
+                    (mousePosX < ring2.x + offset*2 && mousePosX > ring2.x - offset*2 && mousePosY < ring2.y + offset*2 && mousePosY > ring2.y - offset*2) ||
+                    (mousePosX < ring3.x + offset*2 && mousePosX > ring3.x - offset*2 && mousePosY < ring3.y + offset*2 && mousePosY > ring3.y - offset*2) ||
+                    (mousePosX < ring4.x + offset*2 && mousePosX > ring4.x - offset*2 && mousePosY < ring4.y + offset*2 && mousePosY > ring4.y - offset*2))
                 {
                     timeTaken++;
 

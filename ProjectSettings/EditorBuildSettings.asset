@@ -8,4 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Neighborhood_setDressing.unity
     guid: 19c7ebde0f7f72c48a297abd07fe7ec4
-  m_configObjects: {}
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ecf6c5aa89c676046904e2e19ba1e927, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 7576ec2b34c68e248a07c3410738617a, type: 2}

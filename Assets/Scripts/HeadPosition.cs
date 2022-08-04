@@ -14,8 +14,6 @@ public class HeadPosition : MonoBehaviour
 
     [SerializeField] private int rotationResetDistance;
 
-    public bool doIt;
-
     // Start is called before the first frame update
     void Start()
     {
