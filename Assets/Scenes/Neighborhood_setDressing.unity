@@ -41725,6 +41725,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: City Car Hatchback (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3425463455796700749, guid: 0bed9f9135545294ab5d429e1c75cac5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3785641267954157464, guid: 0bed9f9135545294ab5d429e1c75cac5, type: 3}
       propertyPath: m_Materials.Array.size
       value: 2
